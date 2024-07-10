@@ -9,3 +9,6 @@ npm install morgan --save-dev
 
 Installer un middleware qui va gérer la favicon
 npm install serve-favicon --save
+
+Installer un middleware qui va parser les strings en JSON
+npm install body-parser --save
