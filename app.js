@@ -25,4 +25,9 @@ require('./src/routes/createPokemon.js')(app);
 require('./src/routes/updatePokemon.js')(app);
 require('./src/routes/deletePokemon.js')(app);
 
+app.use(({res}) => {
+    const message = "Impossible de trouver la ressource demandée";
+    res.status(400).json({message});
+});
+
 app.listen(port, () => console.log(`Notre app est démarrée sur le port ${port}`));
