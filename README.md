@@ -21,3 +21,5 @@ npm install sequelize --save
 
 Installer mariadb
 npm install mariadb --save
+
+Le dossier src\models récupère les models pour sequelize
