@@ -2,11 +2,30 @@ const express = require('express');
 const morgan = require('morgan');
 const favicon = require('serve-favicon');
 const bodyParser = require('body-parser');
+const { Sequelize } = require('sequelize'); 
 const { success, getUniqueId } = require('./helper.js');
 let pokemons = require('./mock-pokemon');
 
 const app = express();
 const port = 3000; 
+
+const sequelize = new Sequelize(
+    'pokedex',
+    'root',
+    'root',
+    {
+        host: 'localhost',
+        dialect: 'mariadb',
+        dialectOptions: {
+            timezone: 'Etc/GMT-2'
+        },
+        logging: false
+    },
+)
+
+sequelize.authenticate()
+    .then(console.log('La connexion à la BDD a été établie'))
+    .catch(error => console.log(`Erreur de connexion à la BDD : ${error}`))
 
 // Middleware
 app
@@ -44,16 +63,6 @@ app.post('/api/pokemons', (req, res) => {
     const message = `Le pokémon ${pokemonCreated.name} a bien été créé.`
     res.json(success(message, pokemonCreated)); 
 })
-
-// app.put('/api/pokemons/:id', (req, res) => {
-//     const id = parseInt(req.params.id);
-//     const pokemonUpdated = {...req.body, id: id}
-//     pokemons.map(pokemon => {
-//         return pokemon.id === id ? pokemonUpdated : pokemon
-//     })
-//     const message = `Le pokémon ${pokemonUpdated.name} a bien été modifié.`
-//     res.json(success(message, pokemonUpdated)); 
-// })
 
 app.put('/api/pokemons/:id', (req, res) => {
     const id = parseInt(req.params.id);

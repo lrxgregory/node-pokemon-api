@@ -1,3 +1,6 @@
+Démarrer le projet
+npm start
+
 Installer express.js
 npm install express --save
 
@@ -12,3 +15,9 @@ npm install serve-favicon --save
 
 Installer un middleware qui va parser les strings en JSON
 npm install body-parser --save
+
+Installer l'ORM sequelize 
+npm install sequelize --save
+
+Installer mariadb
+npm install mariadb --save
