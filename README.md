@@ -23,3 +23,6 @@ Installer mariadb
 npm install mariadb --save
 
 Le dossier src\models récupère les models pour sequelize
+
+Validateurs et contraintes sequelize
+https://sequelize.org/docs/v6/core-concepts/validations-and-constraints/
