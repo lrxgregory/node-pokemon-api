@@ -26,3 +26,9 @@ Le dossier src\models récupère les models pour sequelize
 
 Validateurs et contraintes sequelize
 https://sequelize.org/docs/v6/core-concepts/validations-and-constraints/
+
+Installer bcrypt pour hash les mot de passe
+npm install bcrypt --save
+
+Installer jsonwebtoken pour la génération de token
+npm install jsonwebtoken --save
