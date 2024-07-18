@@ -32,3 +32,6 @@ npm install bcrypt --save
 
 Installer jsonwebtoken pour la génération de token
 npm install jsonwebtoken --save
+
+Installer swagger
+npm install swagger-jsdoc swagger-ui-express

@@ -1,3 +1,53 @@
+/**
+ * @swagger
+ * /api/pokemons/{id}:
+ *   get:
+ *     summary: Get a pokemon by ID
+ *     description: Retrieve a pokemon by its ID.
+ *     tags:
+ *       - Pokemons
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: The ID of the pokemon to retrieve.
+ *     responses:
+ *       '200':
+ *         description: A pokemon was successfully retrieved.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   description: Success message.
+ *       '404':
+ *         description: Not found. The pokemon with the specified ID was not found.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   description: Error message.
+ *       '500':
+ *         description: Internal server error.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   description: Error message.
+ *                 data:
+ *                   type: object
+ *                   description: Error details.
+ */
 const { Pokemon } = require('../db/sequelize')
 const auth = require('../auth/auth')
   

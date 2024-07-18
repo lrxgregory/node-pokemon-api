@@ -1,3 +1,53 @@
+/**
+ * @swagger
+ * /api/pokemons:
+ *   post:
+ *     summary: Create a new pokemon
+ *     description: Create a new pokemon and add it to the database.
+ *     tags:
+ *       - Pokemons
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json
+ *     responses:
+ *       '200':
+ *         description: The pokemon was successfully created.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   description: Success message.
+ *       '400':
+ *         description: Bad request. Invalid input or unique constraint error.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   description: Error message.
+ *                 data:
+ *                   type: object
+ *                   description: Error details.
+ *       '500':
+ *         description: Internal server error.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   description: Error message.
+ *                 data:
+ *                   type: object
+ *                   description: Error details.
+ */
 const { Pokemon } = require('../db/sequelize')
 const { ValidationError, UniqueConstraintError } = require('sequelize')
 const auth = require('../auth/auth')

@@ -1,3 +1,85 @@
+/**
+ * @swagger
+ * /api/pokemons/{id}:
+ *   put:
+ *     summary: Update a pokemon by ID
+ *     description: Update a pokemon by its ID.
+ *     tags:
+ *       - Pokemons
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: The ID of the pokemon to update.
+ *       - in: body
+ *         name: body
+ *         required: true
+ *         description: The pokemon data to update.
+ *         schema:
+ *           type: object
+ *           properties:
+ *             name:
+ *               type: string
+ *             hp:
+ *               type: integer
+ *             cp:
+ *               type: integer
+ *             picture:
+ *               type: string
+ *             types:
+ *               type: array
+ *               items:
+ *                 type: string
+ *     responses:
+ *       '200':
+ *         description: The pokemon was successfully updated.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   description: Success message.
+ *       '400':
+ *         description: Bad request. Invalid input data.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   description: Error message.
+ *                 data:
+ *                   type: object
+ *                   description: Error details.
+ *       '404':
+ *         description: Not found. The pokemon with the specified ID was not found.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   description: Error message.
+ *       '500':
+ *         description: Internal server error.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   description: Error message.
+ *                 data:
+ *                   type: object
+ *                   description: Error details.
+ */
 const { Pokemon } = require('../db/sequelize')
 const { ValidationError, UniqueConstraintError } = require('sequelize')
 const auth = require('../auth/auth')
